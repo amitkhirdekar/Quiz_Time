@@ -1,0 +1,103 @@
+package com.example.trivia
+
+
+import android.content.Context
+import android.graphics.Color
+import android.os.Bundle
+import android.util.Log
+import android.view.*
+import android.widget.CompoundButton
+import android.widget.Switch
+import androidx.fragment.app.Fragment
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.example.trivia.databinding.FragmentTitleBinding
+
+/**
+ * A simple [Fragment] subclass.
+ */
+class TitleFragment : Fragment() {
+
+    lateinit var switchbutton: Switch
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
+        val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
+            R.layout.fragment_title,container,false)
+
+        switchbutton = binding.darkSwitch
+
+        switchbutton.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                // The switch is enabled/checked
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                // The switch is disabled
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
+
+        binding.playButton.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
+        }
+        setHasOptionsMenu(true)
+        Log.i("TitleFragment", "onCreateView called")
+        return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.i("TitleFragment", "onAttach called")
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("TitleFragment", "onCreate called")
+    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        Log.i("TitleFragment", "onActivityCreated called")
+    }
+    override fun onStart() {
+        super.onStart()
+        Log.i("TitleFragment", "onStart called")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.i("TitleFragment", "onResume called")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.i("TitleFragment", "onPause called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.i("TitleFragment", "onStop called")
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.i("TitleFragment", "onDestroyView called")
+    }
+    override fun onDetach() {
+        super.onDetach()
+        Log.i("TitleFragment", "onDetach called")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.options_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+             return NavigationUI.onNavDestinationSelected(
+                    item!!,
+                    view!!.findNavController())
+                        || super.onOptionsItemSelected(item)
+            }
+}
