@@ -1,5 +1,4 @@
 # Quiz_Time
-## Introduction
 
 This is a app-cum-game meant to increase and test your overall knowledge about World, general knowledge of Animals, Birds and Science,
 Current Affairs and overall Aptitude.
@@ -28,3 +27,8 @@ This android app is available in apk format. [Download here](https://drive.googl
 <img src="Screenshots/Screenshot_1591378289.png" width="30%"></img>
 <img src="Screenshots/Screenshot_1591378308.png" width="30%"></img>
 </p>
+
+## Support
+For any other help, you can contact:
+
+Amit Khirdekar : amitkhirdekar.business@gmail.com
